@@ -1,4 +1,4 @@
-# Hi 👋, I'm Winter LI
+# Hi 👋, I'm Winter
 
 ### A passionate Python developer
 
