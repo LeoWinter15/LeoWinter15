@@ -26,7 +26,7 @@
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/LeoWinter15/LeoWinter15/refs/heads/main/profile-3d-contrib/profile-night-rainbow.svg" />
   <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/LeoWinter15/LeoWinter15/refs/heads/main/profile-3d-contrib/profile-season-animate.svg" />
-  <img alt="LeoWinter15's GitHub contribution calendar in 3D" src="https://raw.githubusercontent.com/LeoWinter15/LeoWinter15/refs/heads/main/profile-3d-contrib/profile-season-animate.svg" width="100%" />
+  <img alt="LeoWinter15's GitHub contributions over the last six months in 3D" src="https://raw.githubusercontent.com/LeoWinter15/LeoWinter15/refs/heads/main/profile-3d-contrib/profile-season-animate.svg" width="100%" />
 </picture>
 
 <!--

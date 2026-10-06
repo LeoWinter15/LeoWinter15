@@ -10,6 +10,7 @@ on:
     paths:
       - "README.md"
       - ".github/workflows/profile-3d.yml"
+      - "scripts/**"
 
 permissions:
   contents: write
@@ -29,8 +30,30 @@ jobs:
         with:
           ref: main
 
-      - name: Generate contribution calendars
-        uses: yoshi389111/github-profile-3d-contrib@7d95e7d4cdc028dd1e1cbd957d65f35efb12ae39 # v0.9.3
+      - name: Check out pinned calendar generator
+        uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          repository: yoshi389111/github-profile-3d-contrib
+          ref: 7d95e7d4cdc028dd1e1cbd957d65f35efb12ae39 # v0.9.3
+          path: .profile-generator
+          persist-credentials: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: "24"
+
+      - name: Customize and compile generator
+        run: |
+          python3 scripts/customize-generator.py .profile-generator
+          npm ci --ignore-scripts --no-audit --no-fund --prefix .profile-generator
+          npm run tsc --prefix .profile-generator
+
+      - name: Verify six-month range and chart layout
+        run: node scripts/check-profile.cjs .profile-generator
+
+      - name: Generate six-month contribution calendars
+        run: node .profile-generator/dist0/src/index.js
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           USERNAME: ${{ github.repository_owner }}
